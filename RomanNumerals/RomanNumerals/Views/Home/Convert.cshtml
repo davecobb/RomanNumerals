@@ -1,0 +1,29 @@
+﻿@model RomanNumerals.Models.ConvertViewModel
+@{
+    ViewBag.Title = "Convert";
+}
+
+<h2>Convert</h2>
+
+@using (Html.BeginForm("Convert", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberToConvert, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NumberToConvert, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Convert" />
+        </div>
+    </div>
+
+    if(!string.IsNullOrEmpty(@Model.RomanNumber))
+    {
+        <div> Result is @Model.RomanNumber</div>
+
+    }
+}
+
